@@ -1,0 +1,36 @@
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #212529;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    min-width: 60px;
+  }
+}
