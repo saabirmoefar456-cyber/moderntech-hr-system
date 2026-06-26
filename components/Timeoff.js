@@ -116,13 +116,15 @@ const TimeOffComponent = {
 
   methods: {
     // Calculate number of days between two dates
-    calculateDays(start, end) {
-      if (!start || !end) return 0;
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      const diff = endDate - startDate;
-      return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
-    },
+  calculateDays(start, end) {
+  if (!start || !end) return 0
+  const startDate = new Date(start)
+  const endDate = new Date(end)
+  if (endDate < startDate) return 0
+  const diff = endDate - startDate
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+  return days === 0 ? 1 : days
+},
 
     // Submit a new leave request
     submitRequest() {
