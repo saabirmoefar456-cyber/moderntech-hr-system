@@ -17,20 +17,23 @@ const app = Vue.createApp({
   },
 
   methods: {
-    handleLogin() {
-      const user = validUsers.find(
-        (u) =>
-          u.username === this.loginUsername &&
-          u.password === this.loginPassword,
-      );
-      if (user) {
-        this.isLoggedIn = true;
-        this.currentUser = user;
-        this.loginError = "";
-      } else {
-        this.loginError = "Invalid username or password";
-      }
-    },
+  handleLogin() {
+  console.log("Typed username:", JSON.stringify(this.loginUsername));
+  console.log("Typed password:", JSON.stringify(this.loginPassword));
+
+  const user = validUsers.find(
+    (u) =>
+      u.username === this.loginUsername &&
+      u.password === this.loginPassword,
+  );
+  if (user) {
+    this.isLoggedIn = true;
+    this.currentUser = user;
+    this.loginError = "";
+  } else {
+    this.loginError = "Invalid username or password";
+  }
+},
 
     handleLogout() {
       this.isLoggedIn = false;
