@@ -241,13 +241,6 @@ const AttendanceComponent = {
       }
     },
 
-    mounted() {
-      const saved = localStorage.getItem("attendanceRecords");
-      if (saved) {
-        this.attendanceRecords = JSON.parse(saved);
-      }
-    },
-
     statusBadge(status) {
       if (status === "Present") return "badge bg-success";
       if (status === "Absent") return "badge bg-danger";
@@ -270,6 +263,16 @@ const AttendanceComponent = {
       };
       return new Date(date).toLocaleDateString("en-ZA", options);
     },
+  },
+
+  // FIX: mounted() must be a top-level lifecycle hook, not a method.
+  // It was previously nested inside `methods`, so it never ran automatically
+  // and saved attendance data was never restored from localStorage on load.
+  mounted() {
+    const saved = localStorage.getItem("attendanceRecords");
+    if (saved) {
+      this.attendanceRecords = JSON.parse(saved);
+    }
   },
 
   template: `
